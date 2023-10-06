@@ -6,7 +6,7 @@ import * as fs from 'fs';
 
 export class Product{
 
-    static async createHeader(path: string): Promise<void>{
+    private static async createHeader(path: string): Promise<void>{
         const header: ProductInterface = {
             name: '',
             weight: 0,

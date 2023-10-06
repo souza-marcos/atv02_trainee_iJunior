@@ -20,9 +20,7 @@ export const showInventory = async () => {
     console.log('MENU - Inventário');
 
     const res = await ProductController.getInvertory();
-    for(let product of res){
-        console.log(product);
-    }
+    console.table(res);
 }
 
 export const deleteProduct = async () => {
