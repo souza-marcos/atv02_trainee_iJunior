@@ -47,5 +47,5 @@ export const totalValue = async () => {
     console.log('MENU - Valor Total do Inventário');
 
     const res = await ProductController.total_value();
-    console.log(`Valor total: ${res}`);
+    console.log(`Valor total: R$ ${(res !== undefined)?res/100:'0,00'}`);
 }
