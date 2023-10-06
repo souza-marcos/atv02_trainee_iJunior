@@ -56,3 +56,17 @@ export const totalWeight = async () => {
     const res = await ProductController.total_weight();
     console.log(`Peso total: ${(res !== undefined)?res/1000.0:'0,00'}Kg`);
 }
+
+export const avgValue = async () => {
+    console.log('MENU - Valor Médio do Inventário');
+
+    const res = await ProductController.avg_value();
+    console.log(`Valor médio: R$ ${(res !== undefined)?res/100.0:'0,00'}`);
+}
+
+export const avgWeight = async () => {  
+    console.log('MENU - Peso Médio do Inventário');
+
+    const res = await ProductController.avg_weight();
+    console.log(`Peso médio: ${(res !== undefined)?res/1000.0:'0,00'}Kg`);
+}

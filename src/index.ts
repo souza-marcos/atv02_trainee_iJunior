@@ -5,7 +5,9 @@ import {
         showInventory,
         deleteProduct,
         totalValue,
-        totalWeight
+        totalWeight,
+        avgValue,
+        avgWeight
 } from './views/product'
 /*
 const test = async () =>{
@@ -21,7 +23,9 @@ async function main(){
     console.log('3 - Deletar Produto');
     console.log('4 - Valor Total do Inventário');
     console.log('5 - Peso Total do Inventário');
-    console.log('6 - Sair');
+    console.log('6 - Valor Médio dos Produtos');
+    console.log('7 - Peso Médio dos Produtos');
+    console.log('8 - Sair');
 
     let option = reader.questionInt('Opção: ');
     switch (option) {
@@ -46,6 +50,14 @@ async function main(){
             break;
 
         case 6:
+            await avgValue();
+            break;
+        
+        case 7:
+            await avgWeight();
+            break;
+
+        case 8:
             console.log('Saindo...');
             return;
         

@@ -71,4 +71,38 @@ export class ProductController{
         }
     }
 
+    static async avg_value(){
+        try{
+            const res = await ProductService.getProducts();
+            let total: number = 0;
+            let quantity: number = 0;
+            res.forEach((el) => {
+                if(el.value !== undefined && el.quantity !== undefined) {
+                    total += el.value * el.quantity;
+                    quantity += el.quantity;
+                }
+            }); 
+            return total/quantity;
+        }catch(err){
+            console.error('Erro: ', err);
+        }
+    }
+
+    static async avg_weight(){
+        try{
+            const res = await ProductService.getProducts();
+            let total: number = 0;
+            let quantity: number = 0;
+            res.forEach((el) => {
+                if(el.weight !== undefined && el.quantity !== undefined) {
+                    total += el.weight * el.quantity;
+                    quantity += el.quantity;
+                }
+            }); 
+            return total/quantity;
+        }
+        catch(err){
+            console.error('Erro: ', err);
+        }
+    }
 };
