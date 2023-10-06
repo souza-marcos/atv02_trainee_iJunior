@@ -1,14 +1,6 @@
 import * as reader from 'readline-sync';
 
-import { 
-        addProduct,
-        showInventory,
-        deleteProduct,
-        totalValue,
-        totalWeight,
-        avgValue,
-        avgWeight
-} from './views/product'
+import * as prod from './views/product'
 /*
 const test = async () =>{
     await totalValue();
@@ -25,39 +17,49 @@ async function main(){
     console.log('5 - Peso Total do Inventário');
     console.log('6 - Valor Médio dos Produtos');
     console.log('7 - Peso Médio dos Produtos');
-    console.log('8 - Sair');
+    console.log('8 - Quantidade de Itens');
+    console.log('9 - Quantidade de Produtos (Tipos)')
+    console.log('10 - Sair');
 
     let option = reader.questionInt('Opção: ');
     switch (option) {
         case 1:
-            await addProduct();
+            await prod.addProduct();
             break;
 
         case 2:
-            await showInventory();
+            await prod.showInventory();
             break;
 
         case 3:
-            await deleteProduct();
+            await prod.deleteProduct();
             break;
         
         case 4:
-            await totalValue();
+            await prod.totalValue();
             break;
 
         case 5:
-            await totalWeight();
+            await prod.totalWeight();
             break;
 
         case 6:
-            await avgValue();
+            await prod.avgValue();
             break;
         
         case 7:
-            await avgWeight();
+            await prod.avgWeight();
             break;
 
         case 8:
+            await prod.totalItems();
+            break;
+
+        case 9:
+            await prod.totalProducts();
+            break;
+
+        case 10:
             console.log('Saindo...');
             return;
         

@@ -105,4 +105,33 @@ export class ProductController{
             console.error('Erro: ', err);
         }
     }
+
+    static async count_items(){
+        try{
+            const res = await ProductService.getProducts();
+            let total: number = 0;
+            res.forEach((el) => {
+                if(el.quantity !== undefined) total += el.quantity;
+            }); 
+            return total;
+        }
+        catch(err){
+            console.error('Erro: ', err);
+        }
+    }
+
+    static async count_products(){  
+        try{
+            const res = await ProductService.getProducts();
+            let total: number = 0;
+            res.forEach((el) => {
+                if(el.quantity !== undefined) total++;
+            }); 
+            return total;
+        }
+        catch(err){
+            console.error('Erro: ', err);
+        }
+    }
+
 };
