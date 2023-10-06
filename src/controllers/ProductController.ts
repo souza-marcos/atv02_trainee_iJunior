@@ -57,4 +57,18 @@ export class ProductController{
         }
     }
 
+    static async total_weight(){
+        try{
+            const res = await ProductService.getProducts();
+            let total: number = 0;
+            res.forEach((el) => {
+                if(el.weight !== undefined && el.quantity !== undefined) 
+                total += el.weight * el.quantity;
+            }); 
+            return total;
+        }catch(err){
+            console.error('Erro: ', err);
+        }
+    }
+
 };

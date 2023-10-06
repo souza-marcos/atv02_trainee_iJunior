@@ -4,7 +4,8 @@ import {
         addProduct,
         showInventory,
         deleteProduct,
-        totalValue
+        totalValue,
+        totalWeight
 } from './views/product'
 /*
 const test = async () =>{
@@ -19,7 +20,8 @@ async function main(){
     console.log('2 - Inventário');
     console.log('3 - Deletar Produto');
     console.log('4 - Valor Total do Inventário');
-    console.log('5 - Sair');
+    console.log('5 - Peso Total do Inventário');
+    console.log('6 - Sair');
 
     let option = reader.questionInt('Opção: ');
     switch (option) {
@@ -40,6 +42,10 @@ async function main(){
             break;
 
         case 5:
+            await totalWeight();
+            break;
+
+        case 6:
             console.log('Saindo...');
             return;
         

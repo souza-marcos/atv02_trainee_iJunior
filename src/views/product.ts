@@ -47,5 +47,12 @@ export const totalValue = async () => {
     console.log('MENU - Valor Total do Inventário');
 
     const res = await ProductController.total_value();
-    console.log(`Valor total: R$ ${(res !== undefined)?res/100:'0,00'}`);
+    console.log(`Valor total: R$ ${(res !== undefined)?res/100.0:'0,00'}`);
+}
+
+export const totalWeight = async () => {
+    console.log('MENU - Peso Total do Inventário');
+
+    const res = await ProductController.total_weight();
+    console.log(`Peso total: ${(res !== undefined)?res/1000.0:'0,00'}Kg`);
 }
