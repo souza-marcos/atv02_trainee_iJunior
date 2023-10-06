@@ -41,4 +41,20 @@ export class ProductController{
         }
     }
 
+    static async total_value(){
+        try{
+            const res = await ProductService.getProducts();
+            let total: number = 0;
+            res.forEach((el) => {
+                if(el.value !== undefined && el.quantity !== undefined) 
+                total += el.value * el.quantity;
+            });
+
+
+            return total;
+        }catch(err){
+            console.error('Erro: ', err);
+        }
+    }
+
 };

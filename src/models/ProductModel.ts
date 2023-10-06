@@ -25,10 +25,10 @@ export class Product{
         const writer = createWriter({
             path: path,
             header: [
-                {id: 'name', title: 'Nome'},
-                {id: 'weight', title: 'Peso'},
-                {id: 'value', title: 'Valor'},
-                {id: 'quantity', title: 'Quantidade'},
+                {id: 'name', title: 'name'},
+                {id: 'weight', title: 'weight'},
+                {id: 'value', title: 'value'},
+                {id: 'quantity', title: 'quantity'},
             ],
             append: true,
         });
@@ -43,9 +43,13 @@ export class Product{
             
             fs.createReadStream(path)
                 .pipe(csv_parser())
-                .on('data', (data: ProductInterface) => results.push(data))
+                .on('data', (data: ProductInterface) => {
+                    if(Object.is(data, {}) == false) results.push(data)
+                })
                 .on('end', () => resolve(results))
-                .on('error', (err: Error) => reject(err));
+                .on('error', (err: Error) => {
+                    console.log(results);
+                    reject(err)});
         })
     }
 
@@ -72,14 +76,15 @@ export class Product{
         if(index === -1) throw new Error('Produto não encontrado!');
 
         products[index] = data_;
+        products.filter((el) => el != null);
 
         const writer = createWriter({
             path: path,
             header: [
-                {id: 'name', title: 'Nome'},
-                {id: 'weight', title: 'Peso'},
-                {id: 'value', title: 'Valor'},
-                {id: 'quantity', title: 'Quantidade'},
+                {id: 'name', title: 'name'},
+                {id: 'weight', title: 'weight'},
+                {id: 'value', title: 'value'},
+                {id: 'quantity', title: 'quantity'},
             ],
             append: false,
         });
@@ -93,14 +98,15 @@ export class Product{
         if(index === -1) throw new Error('Produto não encontrado!');
 
         products.splice(index, 1);
+        products.filter((el) => el != null);
 
         const writer = createWriter({
             path: path,
             header: [
-                {id: 'name', title: 'Nome'},
-                {id: 'weight', title: 'Peso'},
-                {id: 'value', title: 'Valor'},
-                {id: 'quantity', title: 'Quantidade'},
+                {id: 'name', title: 'name'},
+                {id: 'weight', title: 'weight'},
+                {id: 'value', title: 'value'},
+                {id: 'quantity', title: 'quantity'},
             ],
             append: false,
         });

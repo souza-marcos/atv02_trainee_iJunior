@@ -41,3 +41,11 @@ export const deleteProduct = async () => {
 
     await ProductController.deleteProduct(name);
 }
+
+// BUG HERE
+export const totalValue = async () => {
+    console.log('MENU - Valor Total do Inventário');
+
+    const res = await ProductController.total_value();
+    console.log(`Valor total: ${res}`);
+}

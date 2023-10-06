@@ -3,15 +3,23 @@ import * as reader from 'readline-sync';
 import { 
         addProduct,
         showInventory,
-        deleteProduct
+        deleteProduct,
+        totalValue
 } from './views/product'
+/*
+const test = async () =>{
+    await totalValue();
+}
+
+test();*/
 
 async function main(){
     console.log('MENU PRINCIPAL');
     console.log('1 - Adicionar Produto');
     console.log('2 - Inventário');
     console.log('3 - Deletar Produto');
-    console.log('4 - Sair');
+    console.log('4 - Valor Total do Inventário');
+    console.log('5 - Sair');
 
     let option = reader.questionInt('Opção: ');
     switch (option) {
@@ -28,6 +36,10 @@ async function main(){
             break;
         
         case 4:
+            await totalValue();
+            break;
+
+        case 5:
             console.log('Saindo...');
             return;
         
