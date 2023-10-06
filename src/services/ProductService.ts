@@ -29,4 +29,16 @@ export class ProductService{
         await Product.create(path, prod);
     }
 
+    static async deleteProduct(name : string){
+        
+        // const found = Product.findOne(path, name);
+        // if(!found) throw new Error('Produto não encontrado!');
+
+        await Product.delete(path, name);
+    }
+
+    static async find(name : string) : Promise<ProductInterface | undefined>{
+        return await Product.findOne(path, name);
+    }
+
 }

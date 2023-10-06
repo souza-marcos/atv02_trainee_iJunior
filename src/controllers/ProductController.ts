@@ -24,4 +24,21 @@ export class ProductController{
         return res;
     }
 
+    static async deleteProduct(name : string){
+        try{
+            await ProductService.deleteProduct(name);
+            console.log('Produto deletado com sucesso!');
+        }catch(err){
+            console.error('Erro: ', err);
+        }
+    }
+
+    static async find(name : string) : Promise<ProductInterface | undefined>{
+        try{
+            return await ProductService.find(name);
+        }catch(err){
+            console.error('Erro: ', err);
+        }
+    }
+
 };

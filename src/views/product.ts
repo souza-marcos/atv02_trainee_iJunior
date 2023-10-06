@@ -24,3 +24,22 @@ export const showInventory = async () => {
         console.log(product);
     }
 }
+
+export const deleteProduct = async () => {
+    console.log('MENU - Deletar Produto');
+
+    const name = reader.question('Nome: ');
+
+    const found = await ProductController.find(name);
+    
+    if(!found) {
+        console.log('Produto não encontrado!')
+        return;
+    }
+
+    console.log(`Produto encontrado-> Nome: ${found.name}, Quantidade: ${found.quantity}, Valor: ${found.value}, Peso: ${found.weight}`);
+    const res = reader.question('Tem certeza que deseja deletar o produto? (s/n) ');
+    if(res !== 's') return;
+
+    await ProductController.deleteProduct(name);
+}
