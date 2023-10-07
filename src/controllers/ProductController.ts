@@ -82,7 +82,7 @@ export class ProductController{
                     quantity += el.quantity;
                 }
             }); 
-            return total/quantity;
+            return quantity == 0 ? 0 :(total/quantity);
         }catch(err){
             console.error('Erro: ', err);
         }
@@ -99,7 +99,7 @@ export class ProductController{
                     quantity += el.quantity;
                 }
             }); 
-            return total/quantity;
+            return quantity == 0 ? 0 :(total/quantity);
         }
         catch(err){
             console.error('Erro: ', err);
@@ -111,7 +111,7 @@ export class ProductController{
             const res = await ProductService.getProducts();
             let total: number = 0;
             res.forEach((el) => {
-                if(el.quantity !== undefined) total += el.quantity;
+                if(el.quantity !== undefined) total += Number(el.quantity);
             }); 
             return total;
         }

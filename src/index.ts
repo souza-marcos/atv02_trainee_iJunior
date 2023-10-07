@@ -1,14 +1,9 @@
 import * as reader from 'readline-sync';
 
 import * as prod from './views/product'
-/*
-const test = async () =>{
-    await totalValue();
-}
-
-test();*/
 
 async function main(){
+    console.clear();
     console.log('MENU PRINCIPAL');
     console.log('1 - Adicionar Produto');
     console.log('2 - Inventário');
@@ -66,6 +61,7 @@ async function main(){
         default:
             console.log('Opção inválida!');
     }
+    reader.question('Pressione ENTER para continuar...');
     return main();
 }
 
