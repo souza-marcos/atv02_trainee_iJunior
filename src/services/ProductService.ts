@@ -1,13 +1,16 @@
 import { Product } from '../models/ProductModel'
 import { ProductInterface } from '../types/ProductInterface'
 
-const path = '/home/neg/Documents/dev/ijunior/trainee/trainee_iJunior_atividade_2/data/estoque.csv'
+import * as path_node from 'path'
+
+const path = path_node.resolve('./data');
+const filename = 'estoque.csv';
 
 export class ProductService{
 
     static async getProducts() : Promise<ProductInterface[]> {
         // Busca atraves do service
-        return await Product.read(path);
+        return await Product.read(path, filename);
     }
 
     static async saveProduct(prod : ProductInterface){
@@ -21,12 +24,12 @@ export class ProductService{
         }
 
         // Busca os produtos salvos e verifica se já existe algum que possui o mesmo identificador
-        let res = await Product.findOne(path, prod.name);
+        let res = await Product.findOne(path, filename, prod.name);
         
         if(res) throw new Error('Produto já existe no inventário!');
          
         // Salva o produto
-        await Product.create(path, prod);
+        await Product.create(path, filename, prod);
     }
 
     static async deleteProduct(name : string){
@@ -34,11 +37,11 @@ export class ProductService{
         // const found = Product.findOne(path, name);
         // if(!found) throw new Error('Produto não encontrado!');
 
-        await Product.delete(path, name);
+        await Product.delete(path, filename, name);
     }
 
     static async find(name : string) : Promise<ProductInterface | undefined>{
-        return await Product.findOne(path, name);
+        return await Product.findOne(path, filename, name);
     }
 
 }
